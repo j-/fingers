@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Subscription } from 'rxjs';
+import { touches$ } from './touches';
 import TouchItem from './TouchItem';
 import TouchLog from './TouchLog';
 import './TouchApp.css';
@@ -13,23 +15,23 @@ interface State {
 }
 
 export default class Touches extends React.Component<Props, State> {
+	private touches$: Subscription;
+
 	state: State = {
 		touches: null,
 		debug: true,
 	}
 
 	componentDidMount () {
-		window.addEventListener('touchstart', this.updateTargetTouches);
-		window.addEventListener('touchmove', this.updateTargetTouches);
-		window.addEventListener('touchend', this.updateTargetTouches);
-		window.addEventListener('touchcancel', this.updateTargetTouches);
+		this.touches$ = touches$.subscribe((touches) => (
+			this.setState({
+				touches,
+			})
+		));
 	}
 
 	componentWillUnmount () {
-		window.removeEventListener('touchstart', this.updateTargetTouches);
-		window.removeEventListener('touchmove', this.updateTargetTouches);
-		window.removeEventListener('touchend', this.updateTargetTouches);
-		window.removeEventListener('touchcancel', this.updateTargetTouches);
+		this.touches$.unsubscribe();
 	}
 
 	render () {
@@ -46,12 +48,5 @@ export default class Touches extends React.Component<Props, State> {
 				{children}
 			</div>
 		);
-	}
-
-	private updateTargetTouches = (e: TouchEvent) => {
-		e.preventDefault();
-		this.setState({
-			touches: e.targetTouches,
-		});
 	}
 }
