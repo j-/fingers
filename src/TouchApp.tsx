@@ -22,12 +22,14 @@ export default class Touches extends React.Component<Props, State> {
 		window.addEventListener('touchstart', this.updateTargetTouches);
 		window.addEventListener('touchmove', this.updateTargetTouches);
 		window.addEventListener('touchend', this.updateTargetTouches);
+		window.addEventListener('touchcancel', this.updateTargetTouches);
 	}
 
 	componentWillUnmount () {
 		window.removeEventListener('touchstart', this.updateTargetTouches);
 		window.removeEventListener('touchmove', this.updateTargetTouches);
 		window.removeEventListener('touchend', this.updateTargetTouches);
+		window.removeEventListener('touchcancel', this.updateTargetTouches);
 	}
 
 	render () {
