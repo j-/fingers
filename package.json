@@ -12,13 +12,28 @@
     "start": "react-scripts-j start",
     "build": "react-scripts-j build",
     "test": "react-scripts-j test --env=jsdom",
-    "eject": "react-scripts-j eject"
+    "eject": "react-scripts-j eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "^23.1.6",
     "@types/node": "^10.5.2",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
+    "gh-pages": "^1.2.0",
     "typescript": "^2.9.2"
-  }
+  },
+  "description": "Track touch events",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-/fingers.git"
+  },
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/fingers/issues"
+  },
+  "homepage": "https://skeoh.com/fingers"
 }
