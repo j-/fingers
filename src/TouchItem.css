@@ -1,0 +1,26 @@
+.TouchItem {
+	width: 7.5em;
+	height: 7.5em;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.TouchItem::before {
+	content: '';
+	display: block;
+	background-color: #09c;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	animation: animation-enter 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes animation-enter {
+	from {
+		transform: scale(0.5);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
