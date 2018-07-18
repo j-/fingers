@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts-j": "0.3.0"
+    "react-scripts-j": "0.3.0",
+    "rxjs": "^6.2.2"
   },
   "scripts": {
     "start": "react-scripts-j start",
